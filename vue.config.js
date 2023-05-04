@@ -72,5 +72,18 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+  },
+  devServer: {
+    https: false,
+    hot: false,
+    proxy: {
+      '/api': {
+        target: 'http://43.143.0.76:8889/api/private/v1/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   }
 }
