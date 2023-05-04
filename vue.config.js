@@ -91,8 +91,8 @@ module.exports = {
       sass: {
         //additionalData: 或 prependData:   // 8版本用prependData:
         prependData: `
-          @import "@/styles/variables.scss";  // scss文件地址
-          @import "@/styles/mixin.scss";     // scss文件地址
+          @import "@/styles/variables.scss"; 
+          @import "@/styles/mixin.scss"; 
         `
       }
     }
