@@ -21,4 +21,14 @@ service.interceptors.response.use(
     return Promise.reject(new Error(error.response.data))
   }
 )
+
+service.interceptors.request.use(
+  (config) => {
+    config.headers.Authorization = localStorage.getItem('token')
+    return config
+  },
+  (error) => {
+    return Promise.reject(new Error(error))
+  }
+)
 export default service
