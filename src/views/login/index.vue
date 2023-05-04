@@ -13,10 +13,8 @@
         <el-input v-model="form.password" :type="passwordType" />
         <svg-icon
           icon="passwordType==='password'?'eye':'open-eye'"
-          class="svg-container"
           @click="changeType"
-          >123</svg-icon
-        >
+        ></svg-icon>
       </el-form-item>
 
       <el-button type="primary" class="login-button" @click="handleLogin"
@@ -78,7 +76,6 @@ const changeType = () => {
   }
 }
 </script>
-
 <style lang="scss" scoped>
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
@@ -99,20 +96,21 @@ $cursor: #fff;
     margin: 0 auto;
     overflow: hidden;
 
-    ::v-deep .el-form-item {
+    :deep(.el-form-item) {
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       color: #454545;
     }
 
-    ::v-deep .el-input {
+    :deep(.el-input) {
       display: inline-block;
       height: 47px;
       width: 85%;
 
-      input {
+      .el-input__wrapper {
         background: transparent;
+        box-shadow: 0 0 0 0;
         border: 0px;
         -webkit-appearance: none;
         border-radius: 0px;
@@ -159,7 +157,7 @@ $cursor: #fff;
       font-weight: bold;
     }
 
-    ::v-deep .lang-select {
+    :deep(.lang-select) {
       position: absolute;
       top: 4px;
       right: 0;
