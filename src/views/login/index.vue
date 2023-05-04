@@ -5,17 +5,11 @@
         <h3 class="title">用户登录</h3>
       </div>
       <el-form-item>
-        <el-icon :size="20" class="svg-container">
-          <Edit />
-        </el-icon>
-        <!-- <svg-icon icon="user" class="svg-container"></svg-icon> -->
+        <svg-icon icon="user" class="svg-container"></svg-icon>
         <el-input v-model="form.username" />
       </el-form-item>
       <el-form-item>
-        <el-icon :size="20" class="svg-container">
-          <Edit />
-        </el-icon>
-        <!-- <svg-icon icon="password" class="svg-container"></svg-icon> -->
+        <svg-icon icon="password" class="svg-container"></svg-icon>
         <el-input v-model="form.password" />
       </el-form-item>
       <el-button type="primary" class="login-button">登录</el-button>
@@ -25,7 +19,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Edit } from '@element-plus/icons-vue'
 const form = ref({
   username: '',
   password: ''
