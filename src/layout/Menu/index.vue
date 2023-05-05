@@ -44,10 +44,11 @@ const iconList = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
 const icon = ref('menu')
 const defaultActive = ref(sessionStorage.getItem('path') || '/users')
 const menusList = ref([])
-const initMenusList = async () => {
+const initMenuList = async () => {
   menusList.value = await menuList()
 }
-initMenusList()
+
+initMenuList()
 
 const savePath = (path) => {
   sessionStorage.setItem('path', `${path}`)
