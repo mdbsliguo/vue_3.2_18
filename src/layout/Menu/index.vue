@@ -38,7 +38,8 @@
 <script setup>
 import { menuList } from '@/api/menu'
 import { ref } from 'vue'
-// import variables from '@/styles/variables.scss'
+import variables from '@/styles/variables.module.scss'
+console.log(variables)
 
 const iconList = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
 const icon = ref('menu')
