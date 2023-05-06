@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleFullScreen">
+  <div @click="handleFullScreen" id="screenFul">
     <svg-icon :icon="icon ? 'exit-fullscreen' : 'fullscreen'"></svg-icon>
   </div>
 </template>
