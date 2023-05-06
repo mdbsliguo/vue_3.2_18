@@ -27,6 +27,6 @@ export const options = [
   {
     label: 'action',
     prop: 'action',
-    width: 300
+    width: 200
   }
 ]
