@@ -12,7 +12,8 @@
         <svg-icon icon="password" class="svg-container"></svg-icon>
         <el-input v-model="form.password" :type="passwordType" />
         <svg-icon
-          icon="passwordType==='password'?'eye':'open-eye'"
+          class="svg-container"
+          :icon="passwordType === 'password' ? 'eye' : 'eye-open'"
           @click="changeType"
         ></svg-icon>
       </el-form-item>

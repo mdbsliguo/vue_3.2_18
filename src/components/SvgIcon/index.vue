@@ -5,13 +5,13 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-const props = {
+import { defineProps, computed } from 'vue'
+const props = defineProps({
   icon: {
     type: String,
     required: true
   }
-}
+})
 // 不是直接使用而是computed计算后使用
 const iconName = computed(() => {
   return `#icon-${props.icon}`

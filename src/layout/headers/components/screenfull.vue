@@ -1,7 +1,6 @@
 <template>
   <div @click="handleFullScreen">
-    <svg-icom :icon="icon ? 'exit-fullscreen' : 'fullscreen'"></svg-icom>
-    全屏
+    <svg-icon :icon="icon ? 'exit-fullscreen' : 'fullscreen'"></svg-icon>
   </div>
 </template>
 

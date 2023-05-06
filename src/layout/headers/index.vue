@@ -4,7 +4,7 @@
     <Breadcrumb />
 
     <div class="navbar-right">
-      <screen-full class="navbar-item" />
+      <ScreenFull class="navbar-item" />
       <Lang class="navbar-item" />
       <Avatar class="navbar-item" />
     </div>
