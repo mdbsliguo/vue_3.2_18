@@ -1,7 +1,7 @@
 <template>
   <el-menu
     active-text-color="#ffd04b"
-    background-color="#1f2d3d"
+    :background-color="variables.menuBg"
     :default-active="defaultActive"
     text-color="#fff"
     router
@@ -40,11 +40,11 @@
 import { menuList } from '@/api/menu'
 import { ref } from 'vue'
 import variables from '@/styles/variables.module.scss'
-console.log(variables)
+// console.log(variables)
 
 const iconList = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
 const icon = ref('menu')
-console.log('icon', icon)
+// console.log('icon', icon)
 const defaultActive = ref(sessionStorage.getItem('path') || '/users')
 const menusList = ref([])
 const initMenuList = async () => {

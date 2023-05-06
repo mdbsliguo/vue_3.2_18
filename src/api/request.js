@@ -28,7 +28,7 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   (response) => {
-    console.log('response@', response)
+    // console.log('response@', response)
     const { data, meta } = response.data
     if (meta.status === 200 || meta.status === 201) {
       return data

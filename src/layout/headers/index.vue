@@ -1,11 +1,13 @@
 <template>
   <div class="navbar">
     <Hamburger />
+    <Breadcrumb />
   </div>
 </template>
 
 <script setup>
 import Hamburger from './components/hamburger.vue'
+import Breadcrumb from './components/breadcrumb.vue'
 </script>
 
 <style lang="scss" scoped>
