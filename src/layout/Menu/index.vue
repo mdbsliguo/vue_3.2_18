@@ -6,6 +6,7 @@
     text-color="#fff"
     router
     unique-opened
+    :collapse="!$store.getters.siderType"
   >
     <el-sub-menu
       :index="item.id"
@@ -43,6 +44,7 @@ console.log(variables)
 
 const iconList = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
 const icon = ref('menu')
+console.log('icon', icon)
 const defaultActive = ref(sessionStorage.getItem('path') || '/users')
 const menusList = ref([])
 const initMenuList = async () => {
