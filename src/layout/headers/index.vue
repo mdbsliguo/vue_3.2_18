@@ -4,6 +4,7 @@
     <Breadcrumb />
 
     <div class="navbar-right">
+      <screen-full class="navbar-item" />
       <Lang class="navbar-item" />
       <Avatar class="navbar-item" />
     </div>
@@ -15,6 +16,7 @@ import Hamburger from './components/hamburger.vue'
 import Breadcrumb from './components/breadcrumb.vue'
 import Avatar from './components/avatar.vue'
 import Lang from './components/lang.vue'
+import ScreenFull from './components/screenfull.vue'
 </script>
 
 <style lang="scss" scoped>
