@@ -42,18 +42,26 @@ defineProps({
   }
 })
 
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue', 'initUserList'])
 const handleClose = () => {
   emits('update:modelValue', false)
 }
 
-const handleConfirm = async () => {
-  await addUser(form.value)
-  ElMessage({
-    message: i18n.global.t('message.addSuccess'),
-    type: 'success'
+const handleConfirm = () => {
+  formRef.value.validate(async (valid) => {
+    if (valid) {
+      await addUser(form.value)
+      ElMessage({
+        message: i18n.global.t('message.addSuccess'),
+        type: 'success'
+      })
+      emits('initUserList')
+      handleClose()
+    } else {
+      console.log('error submit!')
+      return false
+    }
   })
-  handleClose()
 }
 
 const formRef = ref(null)

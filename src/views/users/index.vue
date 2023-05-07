@@ -17,7 +17,7 @@
       }}</el-button>
     </el-row>
 
-    <el-table type="index" :data="tableData" stripe style="width: 66%">
+    <el-table type="index" :data="tableData" stripe style="width: 100%">
       <!-- <el-table-column type="index"></el-table-column> -->
       <el-table-column
         :width="item.width"
@@ -55,6 +55,7 @@
     v-model="dialogVisible"
     :dialogTitle="dialogTitle"
     v-if="dialogVisible"
+    @initUserList="initGetUsersList"
   />
 </template>
 
