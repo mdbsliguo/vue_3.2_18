@@ -29,3 +29,10 @@ export const editUser = (data) => {
     data
   })
 }
+
+export const deleteUser = (id) => {
+  return request({
+    url: `users/${id}`,
+    method: 'delete'
+  })
+}

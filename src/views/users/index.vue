@@ -41,7 +41,12 @@
             @click="handleDialogValue(row)"
           ></el-button>
           <el-button type="warning" size="small" :icon="Setting"></el-button>
-          <el-button type="danger" size="small" :icon="Delete"></el-button>
+          <el-button
+            type="danger"
+            size="small"
+            :icon="Delete"
+            @click="delUser(row)"
+          ></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -68,9 +73,9 @@
 <script setup>
 import { ref } from 'vue'
 import { Search, Edit, Setting, Delete } from '@element-plus/icons-vue'
-import { getUser, changeUserState } from '@/api/users'
+import { getUser, changeUserState, deleteUser } from '@/api/users'
 import { options } from './options'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import Dialog from './components/dialog.vue'
 import { isNull } from '@/utils/filters'
@@ -110,7 +115,7 @@ const handleCurrentChange = (pageNum) => {
 }
 
 const changeState = async (info) => {
-  await changeUserState(info.id, info.mag_state)
+  await changeUserState(info.id, info.mg_state)
   ElMessage({
     message: i18n.t('message.updeteSuccess'),
     type: 'success'
@@ -128,6 +133,28 @@ const handleDialogValue = (row) => {
 
   dialogVisible.value = true
 }
+
+const delUser = (row) => {
+  ElMessageBox.confirm(i18n.t('dialog.deleteTitle'), 'Warning', {
+    confirmButtonText: 'OK',
+    cancelButtonText: 'Cancel',
+    type: 'warning'
+  })
+    .then(async () => {
+      await deleteUser(row.id)
+      ElMessage({
+        type: 'success',
+        message: 'Delete completed'
+      })
+      initGetUsersList()
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: 'Delete canceled'
+      })
+    })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -135,8 +162,14 @@ const handleDialogValue = (row) => {
   padding-bottom: 16px;
   box-sizing: border-box;
 
-  :v-deep(.el-input__suffix) {
+  :deep(.el-input__suffix) {
     align-items: center;
   }
+}
+:deep(.el-pagination) {
+  padding-top: 16px;
+  box-sizing: border-box;
+  text-align: right;
+  margin-left: 25%;
 }
 </style>
