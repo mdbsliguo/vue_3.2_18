@@ -12,7 +12,7 @@
       <el-button type="primary" :icon="Search" @click="initGetUsersList">{{
         $t('table.search')
       }}</el-button>
-      <el-button type="primary" @click="handleDialogValue">{{
+      <el-button type="primary" @click="handleDialogValue()">{{
         $t('table.adduser')
       }}</el-button>
     </el-row>
@@ -33,8 +33,13 @@
           <!-- <el-switch v-model="row.mg_state" /> -->
           {{ $filters.filetrTimes(row.create_time) }}
         </template>
-        <template #default v-else-if="item.prop === 'action'">
-          <el-button type="primary" size="small" :icon="Edit"></el-button>
+        <template #default="{ row }" v-else-if="item.prop === 'action'">
+          <el-button
+            type="primary"
+            size="small"
+            :icon="Edit"
+            @click="handleDialogValue(row)"
+          ></el-button>
           <el-button type="warning" size="small" :icon="Setting"></el-button>
           <el-button type="danger" size="small" :icon="Delete"></el-button>
         </template>
@@ -56,17 +61,19 @@
     :dialogTitle="dialogTitle"
     v-if="dialogVisible"
     @initUserList="initGetUsersList"
+    :dialogTableValue="dialogTableValue"
   />
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { Search, Edit, Setting, Delete } from '@element-plus/icons-vue'
-import { getUser, changeUserState } from '@/api/user'
+import { getUser, changeUserState } from '@/api/users'
 import { options } from './options'
 import { ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import Dialog from './components/dialog.vue'
+import { isNull } from '@/utils/filters'
 const i18n = useI18n()
 
 const queryForm = ref({
@@ -80,6 +87,7 @@ const tableData = ref([])
 
 const dialogVisible = ref(false)
 const dialogTitle = ref('')
+const dialogTableValue = ref({})
 
 const initGetUsersList = async () => {
   const res = await getUser(queryForm.value)
@@ -109,8 +117,15 @@ const changeState = async (info) => {
   })
 }
 
-const handleDialogValue = () => {
-  dialogTitle.value = '添加用户'
+const handleDialogValue = (row) => {
+  if (isNull(row)) {
+    dialogTitle.value = '添加用户'
+    dialogTableValue.value = {}
+  } else {
+    dialogTitle.value = '编辑用户'
+    dialogTableValue.value = JSON.parse(JSON.stringify(row))
+  }
+
   dialogVisible.value = true
 }
 </script>
